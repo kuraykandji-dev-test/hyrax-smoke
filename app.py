@@ -47,6 +47,13 @@ def slowest(builds):
     return max(builds, key=lambda build: build.seconds)
 
 
+def percentile(builds, pct):
+    """The ``pct``-th percentile build duration (0-100)."""
+    ordered = sorted(build.seconds for build in builds)
+    rank = (pct / 100) * len(ordered)
+    return ordered[int(rank)]
+
+
 def summarize(builds):
     """Render the human-readable summary block."""
     worst = slowest(builds)
@@ -56,6 +63,7 @@ def summarize(builds):
             f"total:   {total_seconds(builds):.1f}s",
             f"average: {average_seconds(builds):.1f}s",
             f"median:  {median_seconds(builds):.1f}s",
+            f"p95:     {percentile(builds, 95):.1f}s",
             f"slowest: {worst.name} ({worst.seconds:.1f}s)",
         ]
     )
