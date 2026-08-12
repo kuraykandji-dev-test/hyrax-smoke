@@ -1,0 +1,14 @@
+{
+  "affected_projects": [],
+  "audit_job_id": null,
+  "category": "review",
+  "created_at": "2026-08-12T17:08:25.215928+00:00",
+  "file": "report.py",
+  "line": 25,
+  "mode": "finding",
+  "project_path": null,
+  "ref": "RF-2-db29261d",
+  "severity": "high",
+  "title": "describe\\_build crashes with None on unknown --highlight",
+  "tool": "review"
+}
