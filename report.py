@@ -33,8 +33,14 @@ def find_build(builds, name):
 
 
 def describe_build(builds, name):
-    """One-line description of a single named build."""
+    """One-line description of a single named build.
+
+    Returns a "no such build" message instead of raising when ``name``
+    does not match any build in ``builds``.
+    """
     build = find_build(builds, name)
+    if build is None:
+        return f"{name}: no such build"
     return f"{build.name} took {build.seconds:.1f}s"
 
 
