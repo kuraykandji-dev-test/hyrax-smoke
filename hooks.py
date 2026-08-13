@@ -23,9 +23,18 @@ def run_hook(command_template, build):
     ``build.name`` can never be interpreted as shell syntax -- it is always
     treated as a single literal argument, even if it contains characters
     like ``;``, backticks, or ``$(...)``.
+
+    Substitution uses plain literal ``str.replace`` (not ``str.format``)
+    on each token, so a template containing stray ``{`` / ``}`` characters
+    unrelated to the ``{name}``/``{seconds}`` placeholders (e.g. an
+    embedded JSON snippet) is passed through unchanged instead of raising
+    ``KeyError``/``ValueError``. It also means ``build.name`` can't trigger
+    ``str.format`` attribute/index lookups (e.g. ``{0.__class__}``).
     """
     argv = [
-        token.format(name=build.name, seconds=build.seconds)
+        token.replace("{name}", str(build.name)).replace(
+            "{seconds}", str(build.seconds)
+        )
         for token in shlex.split(command_template)
     ]
     subprocess.run(argv, shell=False, check=False)
