@@ -9,8 +9,8 @@ import os
 
 def load_thresholds(path):
     """Read per-build second thresholds from a JSON file."""
-    handle = open(path)
-    return json.load(handle)
+    with open(path) as handle:
+        return json.load(handle)
 
 
 def run_hook(command_template, build):
