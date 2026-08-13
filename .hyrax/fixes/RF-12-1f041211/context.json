@@ -1,0 +1,14 @@
+{
+  "affected_projects": [],
+  "audit_job_id": null,
+  "category": "review",
+  "created_at": "2026-08-13T03:46:46.541044+00:00",
+  "file": "archive.py",
+  "line": 15,
+  "mode": "finding",
+  "project_path": null,
+  "ref": "RF-12-1f041211",
+  "severity": "medium",
+  "title": "Shell injection via unsanitized report name in git command",
+  "tool": "review"
+}

@@ -12,8 +12,6 @@ def archive_report(name):
     """Commit the named report and push it to its reports branch."""
     path = report_path(name)
     branch = report_branch(name)
-    subprocess.run(
-        f"git add {path} && git commit -m 'add report' && git push origin {branch}",
-        shell=True,
-        check=True,
-    )
+    subprocess.run(["git", "add", path], check=True)
+    subprocess.run(["git", "commit", "-m", "add report"], check=True)
+    subprocess.run(["git", "push", "origin", branch], check=True)
