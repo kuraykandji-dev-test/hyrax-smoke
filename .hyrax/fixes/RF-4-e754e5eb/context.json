@@ -1,0 +1,14 @@
+{
+  "affected_projects": [],
+  "audit_job_id": null,
+  "category": "review",
+  "created_at": "2026-08-13T03:05:56.443241+00:00",
+  "file": "hooks.py",
+  "line": 16,
+  "mode": "finding",
+  "project_path": null,
+  "ref": "RF-4-e754e5eb",
+  "severity": "high",
+  "title": "Shell injection via unsanitized format into os.system",
+  "tool": "review"
+}
