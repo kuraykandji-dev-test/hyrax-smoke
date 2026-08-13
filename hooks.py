@@ -19,5 +19,11 @@ def run_hook(command_template, build):
 
 
 def over_threshold(build, thresholds):
-    """Whether ``build`` breached its configured threshold."""
-    return build.seconds > thresholds[build.name]
+    """Whether ``build`` breached its configured threshold.
+
+    Builds without a configured threshold (e.g. a newly added build
+    whose entry hasn't been added to the thresholds JSON yet) are
+    treated as not over threshold rather than raising ``KeyError``.
+    """
+    threshold = thresholds.get(build.name)
+    return threshold is not None and build.seconds > threshold
