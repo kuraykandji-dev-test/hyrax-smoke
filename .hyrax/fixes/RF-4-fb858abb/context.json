@@ -1,0 +1,14 @@
+{
+  "affected_projects": [],
+  "audit_job_id": null,
+  "category": "review",
+  "created_at": "2026-08-13T03:15:41.191197+00:00",
+  "file": "hooks.py",
+  "line": 22,
+  "mode": "finding",
+  "project_path": null,
+  "ref": "RF-4-fb858abb",
+  "severity": "high",
+  "title": "KeyError when build.name missing from thresholds",
+  "tool": "review"
+}
